@@ -103,7 +103,7 @@ const crawleOffice = () => {
         }
     });
 
-    crawler.queue(`${url}1`);
+    crawler.queue(`${urlOffice}1`);
 };
 
 app.get('/stanovi', (req, res) => {
@@ -145,14 +145,14 @@ app.get('/poslovni', (req, res) => {
             const jsonString = fs.readFileSync('./ids-office.json');
             const oldIds = JSON.parse(jsonString);
 
-            newIds = ids.filter((item) => { return oldIds.indexOf(item) === -1; });
+            newIds = idsOffice.filter((item) => { return oldIds.indexOf(item) === -1; });
         } catch(err) {
             console.log(err);
         }
 
         fs.writeFile(
           './ids-office.json',
-          JSON.stringify(ids),
+          JSON.stringify(idsOffice),
           function (err) {
               if (err) {
                   console.error('Crap happens');
